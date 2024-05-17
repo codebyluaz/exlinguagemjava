@@ -1,0 +1,118 @@
+//Objeto com diferente tipo de progressão
+
+// Classe abstrata que representa uma progressão
+public abstract class Progressao {
+    protected int atual; // valor atual da progressão
+
+    // Construtor padrão
+    public Progressao() {
+        this.atual = 0;
+    }
+
+    // Método abstrato para obter o próximo número da progressão
+    public abstract int proximo();
+
+    // Método para reiniciar a progressão
+    public void reiniciar() {
+        this.atual = 0;
+    }
+}
+
+// Classe que representa uma progressão aritmética
+public class ProgressaoAritmetica extends Progressao {
+    private int razao; // razão da progressão aritmética
+
+    // Construtor que recebe a razão da progressão
+    public ProgressaoAritmetica(int razao) {
+        super();
+        this.razao = razao;
+    }
+
+    // Método para obter o próximo número da progressão aritmética
+    @Override
+    public int proximo() {
+        int proximo = this.atual + this.razao;
+        this.atual = proximo;
+        return proximo;
+    }
+}
+
+// Classe que representa uma progressão geométrica
+public class ProgressaoGeometrica extends Progressao {
+    private int razao; // razão da progressão geométrica
+
+    // Construtor que recebe a razão da progressão
+    public ProgressaoGeometrica(int razao) {
+        super();
+        this.razao = razao;
+    }
+
+    // Método para obter o próximo número da progressão geométrica
+    @Override
+    public int proximo() {
+        int proximo = this.atual * this.razao;
+        this.atual = proximo;
+        return proximo;
+    }
+}
+
+// Classe que representa uma progressão de Fibonacci
+public class ProgressaoFibonacci extends Progressao {
+    private int anterior; // valor anterior da progressão de Fibonacci
+
+    // Construtor padrão
+    public ProgressaoFibonacci() {
+        super();
+        this.anterior = 1;
+    }
+
+    // Método para obter o próximo número da progressão de Fibonacci
+    @Override
+    public int proximo() {
+        int proximo = this.atual + this.anterior;
+        this.anterior = this.atual;
+        this.atual = proximo;
+        return proximo;
+    }
+}
+
+// Classe principal para testar as progressões
+public class Main {
+    public static void main(String[] args) {
+        // Criar uma progressão aritmética com razão 2
+        ProgressaoAritmetica pa = new ProgressaoAritmetica(2);
+        System.out.println("Progressão aritmética:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(pa.proximo() + " ");
+        }
+        pa.reiniciar();
+        System.out.println("\nReiniciada:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(pa.proximo() + " ");
+        }
+
+        // Criar uma progressão geométrica com razão 3
+        ProgressaoGeometrica pg = new ProgressaoGeometrica(3);
+        System.out.println("\n\nProgressão geométrica:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(pg.proximo() + " ");
+        }
+        pg.reiniciar();
+        System.out.println("\nReiniciada:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(pg.proximo() + " ");
+        }
+
+        // Criar uma progressão de Fibonacci
+        ProgressaoFibonacci pf = new ProgressaoFibonacci();
+        System.out.println("\n\nProgressão de Fibonacci:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(pf.proximo() + " ");
+        }
+        pf.reiniciar();
+        System.out.println("\nReiniciada:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(pf.proximo() + " ");
+        }
+    }
+}
