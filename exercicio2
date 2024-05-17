@@ -1,0 +1,60 @@
+// Classe abstrata que define o comportamento básico de um retângulo
+public abstract class Rectangle {
+    protected String text; // texto a ser desenhado dentro do retângulo
+
+    public Rectangle(String text) {
+        this.text = text;
+    }
+
+    public abstract void draw(); // método abstrato para desenhar o retângulo
+}
+
+//Bordas arredondadas
+// Classe que desenha um retângulo com bordas arredondadas
+public class RoundedRectangle extends Rectangle {
+    public RoundedRectangle(String text) {
+        super(text);
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Desenhando retângulo com bordas arredondadas: " + text);
+    }
+}
+
+// Classe que desenha um retângulo com linhas duplas
+public class DoubleLineRectangle extends Rectangle {
+    public DoubleLineRectangle(String text) {
+        super(text);
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Desenhando retângulo com linhas duplas: " + text);
+    }
+}
+
+// Classe que desenha um retângulo simples
+public class SimpleRectangle extends Rectangle {
+    public SimpleRectangle(String text) {
+        super(text);
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Desenhando retângulo simples: " + text);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle roundedRect = new RoundedRectangle("Exemplo de texto");
+        roundedRect.draw();
+
+        Rectangle doubleLineRect = new DoubleLineRectangle("Outro exemplo de texto");
+        doubleLineRect.draw();
+
+        Rectangle simpleRect = new SimpleRectangle("Texto simples");
+        simpleRect.draw();
+    }
+}
